@@ -30,7 +30,7 @@ public  class Utilisateur {
     private List<Message> Message = new ArrayList<>();
 
     @ManyToMany
-    @JoinTable(name = "messages",
+    @JoinTable(name = "message",
             joinColumns = @JoinColumn(name = "senderId"),
             inverseJoinColumns = @JoinColumn(name = "receiverId"))
     private List<Message> messages = new ArrayList<>();
