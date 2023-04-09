@@ -3,13 +3,11 @@ package app.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDate;
 import java.util.*;
 
 
 @Entity
-@Table(name = "message")
+@Table(name ="message")
 @NoArgsConstructor
 @Data
 public class Message{
@@ -25,11 +23,11 @@ public class Message{
     @JoinColumn(name = "receiverId")
     private Utilisateur receiver;
 
-    @Column(name = "messageTime")
-    private Date mmessageTime;
+    @Column(name = "time")
+    private Date time;
 
-    @Column(name = "messageText")
-    private String mmessageText;
+    @Column(name = "text")
+    private String text;
 
 
 

@@ -30,10 +30,10 @@ public  class Utilisateur {
     private List<Message> Message = new ArrayList<>();
 
     @ManyToMany
-    @JoinTable(name = "Message",
+    @JoinTable(name = "messages",
             joinColumns = @JoinColumn(name = "senderId"),
             inverseJoinColumns = @JoinColumn(name = "receiverId"))
-    private List<Utilisateur> friends = new ArrayList<>();
+    private List<Message> messages = new ArrayList<>();
 
     // Other attributes, constructors, getters and setters
 }
