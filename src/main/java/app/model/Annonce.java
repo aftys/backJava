@@ -31,8 +31,8 @@ public class Annonce{
     @JoinColumn(name = "association_id")
     private Association association;
 
-    @OneToMany(mappedBy = "annonce", cascade = CascadeType.ALL)
-    private List<Marchandise> children = new ArrayList<>();
+   // @OneToMany(mappedBy = "annonce", cascade = CascadeType.ALL)
+    //private List<Marchandise> children = new ArrayList<>();
 
 
 

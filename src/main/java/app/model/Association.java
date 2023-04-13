@@ -1,5 +1,6 @@
 package app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,7 +23,8 @@ public class Association extends Utilisateur{
 
 
     @OneToMany(mappedBy = "association", cascade = CascadeType.ALL)
-    private List<Annonce> children = new ArrayList<>();
+    @JsonIgnore
+    private List<Annonce> annoce = new ArrayList<>();
 
 
 

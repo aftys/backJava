@@ -1,6 +1,7 @@
 package app.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,13 +28,14 @@ public  class Utilisateur {
     private String password;
 
     @OneToMany(mappedBy = "sender")
+    @JsonIgnore
     private List<Message> Message = new ArrayList<>();
 
     @ManyToMany
+    @JsonIgnore
     @JoinTable(name = "message",
             joinColumns = @JoinColumn(name = "senderId"),
             inverseJoinColumns = @JoinColumn(name = "receiverId"))
     private List<Message> messages = new ArrayList<>();
 
-    // Other attributes, constructors, getters and setters
 }

@@ -17,12 +17,17 @@ public class MessageService {
         this.messageRepository = messageRepository;
     }
 
+
     public Message saveMessage(Message message) {
         return messageRepository.save(message);
     }
 
     public List<Message> getMessagesByUser(Utilisateur user) {
         return messageRepository.findByReceiverOrSenderOrderByTimeDesc(user, user);
+    }
+
+    public List<Message> getAllMessages() {
+        return messageRepository.findAll();
     }
 }
 

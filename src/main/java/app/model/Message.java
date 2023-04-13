@@ -1,8 +1,12 @@
 package app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
 import java.util.*;
 
 
@@ -23,8 +27,9 @@ public class Message{
     @JoinColumn(name = "receiverId")
     private Utilisateur receiver;
 
+    @CreationTimestamp
     @Column(name = "time")
-    private Date time;
+    private LocalDateTime time;
 
     @Column(name = "text")
     private String text;

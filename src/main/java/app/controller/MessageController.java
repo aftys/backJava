@@ -5,6 +5,7 @@ import app.model.Message;
 import app.model.Utilisateur;
 import app.service.AdminService;
 import app.service.MessageService;
+import app.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,17 +21,21 @@ public class MessageController {
 
 
     @PostMapping
-    public ResponseEntity<Message> sendMessage(@RequestBody Message message) {
+    public Message sendMessage(@RequestBody Message message) {
         Message savedMessage = messageService.saveMessage(message);
-        return ResponseEntity.ok(savedMessage);
+        return savedMessage;
     }
 
-    @GetMapping("/{userId}")
-    public ResponseEntity<List<Message>> getMessagesByUser(@RequestParam("userId") Long userId) {
-        Utilisateur user = new Utilisateur();
-        user.setId(userId);
+    @GetMapping("/{id}")
+    public List<Message> getMessagesByUser(@RequestParam("id") Long userId) {
+        UtilisateurService userSer = new UtilisateurService();
+        Utilisateur user=userSer.getUtilisateurById(userId);
         List<Message> messages = messageService.getMessagesByUser(user);
-        return ResponseEntity.ok(messages);
+        return messages;
+    }
+    @GetMapping
+    public List<Message> getAllMessages() {
+        return messageService.getAllMessages();
     }
 }
 
